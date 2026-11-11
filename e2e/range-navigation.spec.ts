@@ -11,6 +11,9 @@ async function rawWindow(page: Page) {
 }
 
 async function thumbCenter(input: Locator) {
+  // Each control must be visible: scrolling Start alone can leave End below
+  // the viewport with the Linux runner's font metrics.
+  await input.scrollIntoViewIfNeeded();
   return input.evaluate((node) => {
     const control = node as HTMLInputElement;
     const bounds = control.getBoundingClientRect();

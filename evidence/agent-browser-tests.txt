@@ -109,3 +109,32 @@ Running 16 tests using 1 worker
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 (node:91224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
+
+Raw range test viewport correction verification
+
+> training-monitor@0.0.0 test:e2e
+> playwright test
+
+
+Running 16 tests using 1 worker
+
+(node:92087) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/monitor.spec.ts:85:1 › list filters, sort, empty state, keyboard search and pagination (847ms)
+  ✓   2 e2e/monitor.spec.ts:113:1 › real million-point peak survives every exposed zoom preset and keyboard navigation (620ms)
+  ✓   3 e2e/monitor.spec.ts:143:1 › summary numbers match original generated values and invalid hover stays NaN (270ms)
+  ✓   4 e2e/monitor.spec.ts:161:1 › zero loss disables log scale and remains inspectable (226ms)
+  ✓   5 e2e/monitor.spec.ts:170:1 › duplicate resolution and gaps are disclosed on the real run (234ms)
+  ✓   6 e2e/monitor.spec.ts:178:1 › divergence stays visible in the full curve and the raw tail window (379ms)
+  ✓   7 e2e/monitor.spec.ts:195:1 › worker startup failure is visible and retry recovers (292ms)
+  ✓   8 e2e/monitor.spec.ts:205:1 › a non-responding worker times out instead of loading forever (185ms)
+  ✓   9 e2e/monitor.spec.ts:215:1 › late responses from the previous run cannot replace the current charts (1.0s)
+  ✓  10 e2e/monitor.spec.ts:227:1 › a response with the wrong run ID is ignored (433ms)
+  ✓  11 e2e/monitor.spec.ts:235:1 › empty and entirely non-finite datasets have explicit states (442ms)
+  ✓  12 e2e/monitor.spec.ts:253:1 › timestamps and numbers stay explicit across locale and timezone (437ms)
+  ✓  13 e2e/monitor.spec.ts:270:1 › desktop and 320px layouts fit, paginate, and pass automated accessibility checks (2.4s)
+  ✓  14 e2e/monitor.spec.ts:289:1 › unknown run has a useful recovery link (290ms)
+  ✓  15 e2e/range-navigation.spec.ts:29:1 › Raw start and end handles can be dragged independently with the mouse (1.4s)
+  ✓  16 e2e/range-navigation.spec.ts:66:1 › narrow Raw controls remain independent under touch and recover after cancellation (4.4s)
+
+  16 passed (15.1s)
