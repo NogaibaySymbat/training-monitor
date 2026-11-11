@@ -1,0 +1,66 @@
+
+> training-monitor@0.0.0 test
+> vitest run --reporter=verbose
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.1.0 [39m[90m/Users/symbat/Documents/training-monitor[39m
+
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22msorts steps and keeps complete records together[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mkeeps the last source record for a duplicate step[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mdoes not replace a newer invalid duplicate with older valid data[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mpreserves NaN and both infinities without inserting zeros[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mcounts invalid source values even when a duplicate is removed[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mpreserves a real zero as a valid value[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mdetects missing-step intervals without filling them[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mleaves source arrays unchanged[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22msupports an empty dataset[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects mismatched column lengths[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid training step: NaN[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid training step: Infinity[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid training step: -Infinity[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid training step: -1[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid training step: 0.5[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mnormalization[2m > [22mrejects an invalid expected step interval[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mgenerated fixtures[2m > [22mdefines exactly 20 runs and one million-point run[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mgenerated fixtures[2m > [22mgenerates identical values for the same seed[32m 5[2mms[22m[39m
+ [32m✓[39m src/data/normalize.test.ts[2m > [22mgenerated fixtures[2m > [22mpreserves the single spike when normalizing one million points[32m 116[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mdoes not substitute an older value for an invalid latest loss[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mpreserves a real zero[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mreturns unavailable values when every loss is invalid[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mcalculates summaries after sorting and duplicate resolution[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mretains the million-point spike in a bounded preview[32m 130[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mseparates preview segments across non-finite values[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/overview.test.ts[2m > [22mrun overview[2m > [22mseparates preview segments across missing steps[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 1 buckets at 0–999999[32m 13[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 1 buckets at 400000–600000[32m 5[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 1 buckets at 499000–501000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 1 buckets at 499990–500010[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 1 buckets at 500000–500000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 8 buckets at 0–999999[32m 18[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 8 buckets at 400000–600000[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 8 buckets at 499000–501000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 8 buckets at 499990–500010[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 8 buckets at 500000–500000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 64 buckets at 0–999999[32m 6[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 64 buckets at 400000–600000[32m 1[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 64 buckets at 499000–501000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 64 buckets at 499990–500010[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 64 buckets at 500000–500000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 480 buckets at 0–999999[32m 6[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 480 buckets at 400000–600000[32m 2[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 480 buckets at 499000–501000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 480 buckets at 499990–500010[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mretains the spike with 480 buckets at 500000–500000[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mdoes not invent the global spike outside its viewport[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mpreserves a real zero and breaks around invalid values[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mdoes not connect across missing steps[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mdoes not backfill an invalid latest value[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mkeeps the axis large enough for the real peak[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mdoes not round a small learning rate to zero[32m 0[2mms[22m[39m
+ [32m✓[39m src/data/chart.test.ts[2m > [22mchart aggregation[2m > [22mrejects a logarithmic axis containing zero[32m 0[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m53 passed[39m[22m[90m (53)[39m
+[2m   Start at [22m 18:21:49
+[2m   Duration [22m 294ms[2m (tests 80%, transform 14%, import 5%, worker 1%)[22m
+

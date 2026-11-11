@@ -1,0 +1,16 @@
+
+> training-monitor@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.7 building client environment for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                            0.46 kB │ gzip:  0.30 kB
+dist/assets/run.worker-B9eUZaH4.js         4.23 kB
+dist/assets/overview.worker-BIoTIBPL.js    4.74 kB
+dist/assets/index-uUTU55G9.css            17.48 kB │ gzip:  4.38 kB
+dist/assets/index-QUIMxO6G.js            251.35 kB │ gzip: 78.62 kB
+
+✓ built in 93ms

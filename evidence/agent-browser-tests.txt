@@ -1,0 +1,26 @@
+
+{"at": "2026-11-11T14:31:43.221502+00:00", "check": "browser-tests", "exitCode": 0}
+
+> training-monitor@0.0.0 test:e2e
+> playwright test
+
+
+Running 13 tests using 1 worker
+
+(node:87184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/monitor.spec.ts:85:1 › list filters, sort, empty state, keyboard search and pagination (1.0s)
+  ✓   2 e2e/monitor.spec.ts:113:1 › real million-point peak survives every exposed zoom preset and keyboard navigation (658ms)
+  ✓   3 e2e/monitor.spec.ts:143:1 › summary numbers match original generated values and invalid hover stays NaN (297ms)
+  ✓   4 e2e/monitor.spec.ts:161:1 › zero loss disables log scale and remains inspectable (197ms)
+  ✓   5 e2e/monitor.spec.ts:170:1 › duplicate resolution and gaps are disclosed on the real run (214ms)
+  ✓   6 e2e/monitor.spec.ts:176:1 › worker startup failure is visible and retry recovers (314ms)
+  ✓   7 e2e/monitor.spec.ts:186:1 › a non-responding worker times out instead of loading forever (183ms)
+  ✓   8 e2e/monitor.spec.ts:196:1 › late responses from the previous run cannot replace the current charts (1.0s)
+  ✓   9 e2e/monitor.spec.ts:208:1 › a response with the wrong run ID is ignored (422ms)
+  ✓  10 e2e/monitor.spec.ts:216:1 › empty and entirely non-finite datasets have explicit states (473ms)
+  ✓  11 e2e/monitor.spec.ts:234:1 › timestamps and numbers stay explicit across locale and timezone (457ms)
+  ✓  12 e2e/monitor.spec.ts:251:1 › desktop and 320px layouts fit, paginate, and pass automated accessibility checks (2.5s)
+  ✓  13 e2e/monitor.spec.ts:270:1 › unknown run has a useful recovery link (304ms)
+
+  13 passed (9.5s)
