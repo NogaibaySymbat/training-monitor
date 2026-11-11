@@ -4,22 +4,23 @@ Apple M2 Pro, 157.0.8103.50 Chrome, production builds, headless, 1280 x 900, CPU
 
 | Metric | Before | Optimized |
 | --- | ---: | ---: |
-| All three charts ready (ms) | 529.5 | 468.2 |
-| Longest load main-thread task (ms) | 153.8 | 54.2 |
-| First 100k click response (ms) | 69.0 | 85.9 |
-| Return to All click response (ms) | 66.8 | 18.3 |
-| Hover response proxy, median (ms) | 23.8 | 29.7 |
-| Hover response proxy, maximum (ms) | 53.0 | 35.0 |
-| Retained V8 used heap (MiB) | 4.16 | 4.37 |
-| Renderer RSS after GC (MiB) | 195.06 | 195.41 |
+| All three charts ready (ms) | 529.5 | 434.6 |
+| Longest load task >=50 ms (ms) | 153.8 | 0.0 |
+| First 100k click response (ms) | 69.0 | 75.0 |
+| Return to All click response (ms) | 66.8 | 16.4 |
+| Hover response proxy, median (ms) | 23.8 | 27.9 |
+| Hover response proxy, maximum (ms) | 53.0 | 51.6 |
+| Retained V8 used heap (MiB) | 4.16 | 4.39 |
+| Renderer RSS after GC (MiB) | 195.06 | 195.72 |
 
-Initial frames now prepare in the worker, alongside generation, normalization and statistics. Original typed-array buffers transfer to the UI. A four-frame-per-metric LRU cache avoids repeat sampling; a WeakMap ties it to immutable snapshot identity. Startup main-thread blocking and repeated zoom improved, but first uncached 100k zoom and median hover regressed. The maximum observed hover proxy fell. Retained heap increased slightly. These results are reported, not averaged away. The cache-only intermediate had a 539 ms median readiness versus the 529.5 ms baseline and is retained under evidence/performance/after.
+Initial frames now prepare in the worker alongside generation, normalization and statistics; original buffers transfer to the UI. A four-frame-per-metric LRU cache uses immutable snapshot identity. The final version includes the Raw handle fix. Startup and repeated zoom improved, but cold 100k zoom and median hover regressed. Heap increased slightly. Zero in the task row means no task reached 50 ms in the median repeat. All repeats remain available, including cache-only results (539 ms readiness) under after and the prior worker version under optimized.
 
 ## Raw results and traces
 
 - `evidence/performance/before/results.json`: all three controlled baseline repeats.
 - `evidence/performance/after/results.json`: all three intermediate cache-only repeats, including regressions.
-- `evidence/performance/optimized/results.json`: all three final repeats.
+- `evidence/performance/optimized/results.json`: all three prior worker-optimization repeats.
+- `evidence/performance/range-fix/results.json`: all three final repeats, including the Raw control fix.
 - Each directory contains load and interaction `.json.gz` traces for every repeat. Import into Chrome DevTools Performance.
 - Original candidate traces remain at the top of evidence. The extension-contaminated trace is excluded from optimization comparisons, not deleted. Candidate Task Manager memory was 108 MB, active JavaScript 5,203 KB; this is a separate manual measurement, not substituted for the controlled RSS comparison.
 
@@ -52,5 +53,3 @@ npm run profile -- review http://127.0.0.1:4186 3
 To replay the actual original compiled baseline, extract `evidence/baseline-build.tar.gz` into a separate temporary directory and serve that directory with Vite preview using `--outDir` and a different port. Run the same profile script against that origin with a fresh output label. The archive includes its source maps; extracted first-party source is also retained in `evidence/baseline-source` for inspection. Never replace final source files to run the baseline.
 
 Profile labels are output directory names. Choose a new label for subsequent runs to preserve existing evidence.
-
-The captured profiles precede a final wording correction from "source records" to "retained records" in chart-window counters. Aggregation and sampling were unchanged. The clarification distinguishes deduplicated window records from the source-record count in the summary.

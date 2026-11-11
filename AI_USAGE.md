@@ -14,7 +14,9 @@ AI assistance was used for architecture, synthetic data generation, normalizatio
 
 ## Verification and corrections
 
-The candidate initially ran build, lint and 53 unit tests and supplied screenshots and traces. During final completion, the assistant ran 66 unit tests, 14 browser tests, four axe checks, three-repeat controlled before/after profiles, and inspected desktop/mobile screenshots in a working copy.
+The candidate initially ran build, lint and 53 unit tests and supplied screenshots and traces. During final completion, the assistant ran 66 unit tests, 16 browser tests, four axe checks, three-repeat controlled before/after profiles, and inspected desktop/mobile screenshots in a working copy.
+
+A subsequent interaction review found overlapping Raw range handles. The assistant separated close handles into labelled native controls and added mouse/touch/cancellation tests, including 320px touch input. The regression fails on the original compiled baseline and passes on the fixed version. The expected failure output is preserved in evidence/range-regression-before.txt. Final performance repeats after this fix are in evidence/performance/range-fix; earlier optimized results remain available.
 
 An initial trace was dominated by Chrome extensions. It was retained, followed by a clean trace. Cache-only changes improved repeated zoom but did not improve initial readiness. That intermediate result was retained; initial frame preparation then moved into the worker. Final cold-zoom and hover-median regressions are reported. No benchmark numbers were invented.
 

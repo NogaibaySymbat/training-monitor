@@ -15,7 +15,7 @@ def load(label):
     return json.loads((ROOT / f'evidence/performance/{label}/results.json').read_text())
 
 before = load('before')
-after = load('optimized')
+after = load('range-fix')
 
 def med(doc, field):
     return statistics.median(run[field] for run in doc['results'])
@@ -34,7 +34,7 @@ def heap(doc):
 
 rows = [
     ('All three charts ready (ms)', med(before, 'chartsReadyMs'), med(after, 'chartsReadyMs'), 1),
-    ('Longest load main-thread task (ms)', task(before), task(after), 1),
+    ('Longest load task >=50 ms (ms)', task(before), task(after), 1),
     ('First 100k click response (ms)', click(before, 0), click(after, 0), 1),
     ('Return to All click response (ms)', click(before, 3), click(after, 3), 1),
     ('Hover response proxy, median (ms)', statistics.median(hover(before)), statistics.median(hover(after)), 1),
@@ -56,10 +56,10 @@ method = (
     '1280 x 900, CPU slowdown 4x, no extensions or network throttling. Three fresh-browser repeats per version; table uses medians except the stated maximum. Ready means three non-empty SVG paths committed plus two animation frames, including below-fold charts; it is not LCP. Click response comes from trace EventTiming. Hover measures a correct-step tooltip observed plus the next animation frame, a paint-boundary proxy rather than display latency. Memory is sampled after forced GC; RSS differs from Chrome Task Manager footprint.'
 )
 outcome = (
-    'Initial frames now prepare in the worker, alongside generation, normalization and statistics. Original typed-array buffers transfer to the UI. A four-frame-per-metric LRU cache avoids repeat sampling; a WeakMap ties it to immutable snapshot identity. Startup main-thread blocking and repeated zoom improved, but first uncached 100k zoom and median hover regressed. The maximum observed hover proxy fell. Retained heap increased slightly. These results are reported, not averaged away. The cache-only intermediate had a 539 ms median readiness versus the 529.5 ms baseline and is retained under evidence/performance/after.'
+    'Initial frames now prepare in the worker alongside generation, normalization and statistics; original buffers transfer to the UI. A four-frame-per-metric LRU cache uses immutable snapshot identity. The final version includes the Raw handle fix. Startup and repeated zoom improved, but cold 100k zoom and median hover regressed. Heap increased slightly. Zero in the task row means no task reached 50 ms in the median repeat. All repeats remain available, including cache-only results (539 ms readiness) under after and the prior worker version under optimized.'
 )
 sections2 = [
-    ('Checks and their output', '66 unit tests in four files and 14 Playwright browser tests passed locally. Tests cover deterministic data, sorting, last-record duplicate policy, invalid/zero preservation, missing intervals, extrema, sampling bounds, cache eviction and snapshot isolation, worker-prepared frame equivalence, resize fallback, real DOM summaries/axes/hover, every exposed zoom preset, keyboard and range controls, filter/sort/pagination, unknown IDs and responsive layout. Four axe audits at 1280 and 320 px detected no violations. Raw output, reports, screenshots and Chrome-importable traces are in evidence.'),
+    ('Checks and their output', '66 unit tests in four files and 16 Playwright browser tests passed locally. Coverage includes deterministic data, duplicate policy, invalid/zero preservation, gaps, extrema, sampling bounds, cache eviction and snapshot isolation, worker-frame equivalence, resize fallback, DOM summaries/axes/hover, zoom presets, keyboard, filtering and pagination. Raw handles use separate labelled rows when close; mouse, touch at 390/320 px and cancellation are tested. The new regression fails on the original baseline; its output is retained. Four axe audits at 1280/320 px found no violations. Logs, screenshots and traces are in evidence.'),
     ('Silent failures checked', 'Race: a deliberately late response from the previous run still fires after termination and cannot replace the current charts; a mismatched run ID is ignored. Failures: startup error is visible, retry recovers, a non-responding worker times out after 15 seconds, and empty/all-invalid inputs have explicit states. Freshness: fixed snapshot time and no-live-updates disclosure prevent Running from implying a live connection. Locale/time zone: en-US and UTC remain identical in Los Angeles and Almaty browser contexts. Log zero: a real zero remains inspectable and disables log scale. Divergence is retained without smoothing.'),
     ('What the tests do not catch', 'Finite fixtures and presets are not exhaustive proof of all data distributions, zoom widths or rasterization. Sampling preserves extrema, not every fluctuation or every invalid position in a compressed bucket; the event strip aggregates counts. Axe does not replace screen-reader, low-vision or real-device testing. Profiles are three local headless repeats, not population statistics or a low-end phone benchmark. Fault injection tests frontend isolation, not an actual streaming server, billing system or network freshness protocol. Cached snapshots must be immutable; future in-place updates would violate that contract.'),
     ('Verdict: SHIP the scoped read-only demo', 'The displayed synthetic values, corruption disclosures and interactions have reproducible evidence. First follow-up: move uncached viewport queries into the worker or use a tested range index, because first 100k zoom still blocks the main thread. A paid live-run service additionally needs a real data source and freshness/connection contract; this demo does not claim those capabilities.'),
@@ -87,7 +87,8 @@ performance = f'''# Performance evidence
 
 - `evidence/performance/before/results.json`: all three controlled baseline repeats.
 - `evidence/performance/after/results.json`: all three intermediate cache-only repeats, including regressions.
-- `evidence/performance/optimized/results.json`: all three final repeats.
+- `evidence/performance/optimized/results.json`: all three prior worker-optimization repeats.
+- `evidence/performance/range-fix/results.json`: all three final repeats, including the Raw control fix.
 - Each directory contains load and interaction `.json.gz` traces for every repeat. Import into Chrome DevTools Performance.
 - Original candidate traces remain at the top of evidence. The extension-contaminated trace is excluded from optimization comparisons, not deleted. Candidate Task Manager memory was 108 MB, active JavaScript 5,203 KB; this is a separate manual measurement, not substituted for the controlled RSS comparison.
 

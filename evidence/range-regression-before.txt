@@ -1,0 +1,48 @@
+
+Regression check against the original compiled baseline; failure is expected.
+
+> training-monitor@0.0.0 test:e2e
+> playwright test e2e/range-navigation.spec.ts --grep Raw start and end --reporter=list --output=tmp/range-before-test-results
+
+
+Running 1 test using 1 worker
+
+(node:91661) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 e2e/range-navigation.spec.ts:26:1 › Raw start and end handles can be dragged independently with the mouse (991ms)
+
+
+  1) e2e/range-navigation.spec.ts:26:1 › Raw start and end handles can be dragged independently with the mouse 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 499500
+    Received:   499500
+
+      35 |   await page.mouse.move(point.x - 60, point.y, { steps: 8 });
+      36 |   await page.mouse.up();
+    > 37 |   expect(Number(await start.inputValue())).toBeLessThan(original.start);
+         |                                            ^
+      38 |   await expect(end).toHaveValue(String(original.end));
+      39 |
+      40 |   original = await rawWindow(page);
+        at /Users/symbat/Documents/ChatGPT/сима 2/training-monitor/e2e/range-navigation.spec.ts:37:44
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    tmp/range-before-test-results/range-navigation-Raw-start-10b42-ndependently-with-the-mouse/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: tmp/range-before-test-results/range-navigation-Raw-start-10b42-ndependently-with-the-mouse/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    tmp/range-before-test-results/range-navigation-Raw-start-10b42-ndependently-with-the-mouse/trace.zip
+    Usage:
+
+        npx playwright show-trace tmp/range-before-test-results/range-navigation-Raw-start-10b42-ndependently-with-the-mouse/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e/range-navigation.spec.ts:26:1 › Raw start and end handles can be dragged independently with the mouse 
+
+Exit code: 1

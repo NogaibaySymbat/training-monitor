@@ -1,0 +1,216 @@
+{
+  "label": "range-fix",
+  "origin": "http://127.0.0.1:4186",
+  "platform": "darwin",
+  "arch": "arm64",
+  "cpuModel": "Apple M2 Pro",
+  "chartsReadyDefinition": "All three non-empty SVG paths committed, followed by two animation frames; includes below-fold charts.",
+  "hoverDefinition": "Pointer timestamp to correct original step tooltip observed, followed by one animation frame. A paint-boundary proxy, not display hardware latency.",
+  "memoryDefinition": "CDP V8 heap and backing storage, plus renderer RSS from ps after forced GC; RSS is not Chrome Task Manager memory footprint.",
+  "results": [
+    {
+      "iteration": 1,
+      "browserVersion": "157.0.8103.50",
+      "cpuThrottle": 4,
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "actions": [
+        "100k",
+        "10k",
+        "Inspect peak",
+        "All",
+        "100k",
+        "All"
+      ],
+      "chartsReadyMs": 583.7999999523163,
+      "hoverMs": [
+        31.600000023841858,
+        28.399999976158142,
+        29.40000009536743,
+        30.299999952316284,
+        32,
+        32.5,
+        33.89999997615814,
+        34.199999928474426,
+        35.200000047683716,
+        51.60000002384186,
+        35.60000002384186,
+        36.89999997615814
+      ],
+      "lcpMs": 596,
+      "fcpMs": 264,
+      "load": {
+        "longTaskCount": 2,
+        "longestTaskMs": 76.407,
+        "clickResponseMs": [],
+        "extensionEventCount": 0,
+        "rendererPid": 91508
+      },
+      "interaction": {
+        "longTaskCount": 2,
+        "longestTaskMs": 76.028,
+        "clickResponseMs": [
+          111.351,
+          29.466,
+          27.562,
+          17.711,
+          18.527,
+          21.7
+        ],
+        "extensionEventCount": 0,
+        "rendererPid": 91508
+      },
+      "memoryBeforeGC": {
+        "usedSize": 9059912,
+        "totalSize": 12746752,
+        "embedderHeapUsedSize": 4844376,
+        "backingStorageSize": 32345956
+      },
+      "memoryAfterGC": {
+        "usedSize": 4601328,
+        "totalSize": 5144576,
+        "embedderHeapUsedSize": 1465984,
+        "backingStorageSize": 32257970
+      },
+      "rendererRssKiB": 200416
+    },
+    {
+      "iteration": 2,
+      "browserVersion": "157.0.8103.50",
+      "cpuThrottle": 4,
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "actions": [
+        "100k",
+        "10k",
+        "Inspect peak",
+        "All",
+        "100k",
+        "All"
+      ],
+      "chartsReadyMs": 402.5,
+      "hoverMs": [
+        24.399999976158142,
+        23.200000047683716,
+        23.800000071525574,
+        25,
+        24,
+        23.899999976158142,
+        25.100000023841858,
+        25.90000009536743,
+        27.600000023841858,
+        28.399999976158142,
+        28.90000009536743,
+        28.600000023841858
+      ],
+      "lcpMs": 416,
+      "fcpMs": 164,
+      "load": {
+        "longTaskCount": 0,
+        "longestTaskMs": 0,
+        "clickResponseMs": [],
+        "extensionEventCount": 0,
+        "rendererPid": 91553
+      },
+      "interaction": {
+        "longTaskCount": 1,
+        "longestTaskMs": 60.027,
+        "clickResponseMs": [
+          75.048,
+          26.409,
+          27.016,
+          16.442,
+          16.2,
+          21.202
+        ],
+        "extensionEventCount": 0,
+        "rendererPid": 91553
+      },
+      "memoryBeforeGC": {
+        "usedSize": 8738616,
+        "totalSize": 11960320,
+        "embedderHeapUsedSize": 4843336,
+        "backingStorageSize": 32321676
+      },
+      "memoryAfterGC": {
+        "usedSize": 4604820,
+        "totalSize": 5406720,
+        "embedderHeapUsedSize": 1461160,
+        "backingStorageSize": 32257970
+      },
+      "rendererRssKiB": 200240
+    },
+    {
+      "iteration": 3,
+      "browserVersion": "157.0.8103.50",
+      "cpuThrottle": 4,
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "actions": [
+        "100k",
+        "10k",
+        "Inspect peak",
+        "All",
+        "100k",
+        "All"
+      ],
+      "chartsReadyMs": 434.60000002384186,
+      "hoverMs": [
+        22.700000047683716,
+        21.5,
+        22.5,
+        22.899999976158142,
+        24,
+        25,
+        23.800000071525574,
+        25.600000023841858,
+        26.800000071525574,
+        28.600000023841858,
+        28.299999952316284,
+        29.799999952316284
+      ],
+      "lcpMs": 448,
+      "fcpMs": 196,
+      "load": {
+        "longTaskCount": 0,
+        "longestTaskMs": 0,
+        "clickResponseMs": [],
+        "extensionEventCount": 0,
+        "rendererPid": 91591
+      },
+      "interaction": {
+        "longTaskCount": 1,
+        "longestTaskMs": 62.737,
+        "clickResponseMs": [
+          74.992,
+          27.771,
+          27.782,
+          16.218,
+          17.32,
+          21.438
+        ],
+        "extensionEventCount": 0,
+        "rendererPid": 91591
+      },
+      "memoryBeforeGC": {
+        "usedSize": 8842764,
+        "totalSize": 12484608,
+        "embedderHeapUsedSize": 4833616,
+        "backingStorageSize": 32321679
+      },
+      "memoryAfterGC": {
+        "usedSize": 4604796,
+        "totalSize": 5144576,
+        "embedderHeapUsedSize": 1460792,
+        "backingStorageSize": 32257973
+      },
+      "rendererRssKiB": 201024
+    }
+  ]
+}

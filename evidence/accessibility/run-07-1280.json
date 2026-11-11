@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-11T14:54:22.519Z",
+  "timestamp": "2026-11-11T16:02:20.649Z",
   "url": "http://127.0.0.1:4186/#/runs/run-07",
   "toolOptions": {
     "runOnly": {
@@ -1422,7 +1422,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -1702,7 +1702,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -1942,7 +1942,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         }
       ]
@@ -2248,7 +2248,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -2374,7 +2374,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -2482,7 +2482,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         }
       ]
@@ -2822,6 +2822,70 @@
           "target": [
             "svg[viewBox=\"0 0 1000 40\"]"
           ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<output aria-hidden=\"true\">0</output>",
+          "target": [
+            ".range-control-start > .range-control-caption > output[aria-hidden=\"true\"]"
+          ]
+        },
+        {
+          "any": [],
+          "all": [
+            {
+              "id": "focusable-modal-open",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements while a modal is open"
+            },
+            {
+              "id": "focusable-disabled",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            },
+            {
+              "id": "focusable-not-tabbable",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "No focusable elements contained within element"
+            }
+          ],
+          "none": [],
+          "impact": null,
+          "html": "<output aria-hidden=\"true\">999,999</output>",
+          "target": [
+            ".range-control-end > .range-control-caption > output[aria-hidden=\"true\"]"
+          ]
         }
       ]
     },
@@ -3072,7 +3136,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -3198,7 +3262,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -3306,7 +3370,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         }
       ]
@@ -4422,7 +4486,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -4646,7 +4710,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -4838,7 +4902,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         }
       ]
@@ -5144,7 +5208,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -5270,7 +5334,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -5378,7 +5442,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         }
       ]
@@ -6582,7 +6646,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(5) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -6732,7 +6796,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(7) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -6882,7 +6946,7 @@
           "impact": null,
           "html": "<output aria-live=\"polite\">Hover to inspect raw values</output>",
           "target": [
-            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output"
+            ".metric-container:nth-child(8) > .metric-chart > .chart-bottom > output[aria-live=\"polite\"]"
           ]
         },
         {
@@ -7086,7 +7150,7 @@
               "data": null,
               "relatedNodes": [
                 {
-                  "html": "<label class=\"sr-only\" for=\"range-start\">Start step</label>",
+                  "html": "<label for=\"range-start\">Start step</label>",
                   "target": [
                     "label[for=\"range-start\"]"
                   ]
@@ -7111,7 +7175,7 @@
               "data": null,
               "relatedNodes": [
                 {
-                  "html": "<label class=\"sr-only\" for=\"range-end\">End step</label>",
+                  "html": "<label for=\"range-end\">End step</label>",
                   "target": [
                     "label[for=\"range-end\"]"
                   ]
@@ -7235,7 +7299,7 @@
               "data": null,
               "relatedNodes": [
                 {
-                  "html": "<label class=\"sr-only\" for=\"range-start\">Start step</label>",
+                  "html": "<label for=\"range-start\">Start step</label>",
                   "target": [
                     "label[for=\"range-start\"]"
                   ]
@@ -7268,7 +7332,7 @@
               "data": null,
               "relatedNodes": [
                 {
-                  "html": "<label class=\"sr-only\" for=\"range-end\">End step</label>",
+                  "html": "<label for=\"range-end\">End step</label>",
                   "target": [
                     "label[for=\"range-end\"]"
                   ]
@@ -8045,12 +8109,12 @@
               "id": "target-size",
               "data": {
                 "minSize": 24,
-                "width": 1128,
-                "height": 40
+                "width": 1174,
+                "height": 44
               },
               "relatedNodes": [],
               "impact": "serious",
-              "message": "Control has sufficient size (1128px by 40px, should be at least 24px by 24px)"
+              "message": "Control has sufficient size (1174px by 44px, should be at least 24px by 24px)"
             }
           ],
           "all": [],
@@ -8067,12 +8131,12 @@
               "id": "target-size",
               "data": {
                 "minSize": 24,
-                "width": 1128,
-                "height": 40
+                "width": 1174,
+                "height": 44
               },
               "relatedNodes": [],
               "impact": "serious",
-              "message": "Control has sufficient size (1128px by 40px, should be at least 24px by 24px)"
+              "message": "Control has sufficient size (1174px by 44px, should be at least 24px by 24px)"
             }
           ],
           "all": [],

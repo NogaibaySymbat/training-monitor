@@ -31,7 +31,7 @@ npm run build
 npm run test:e2e
 ```
 
-Browser checks use installed Google Chrome locally; CI uses Chrome preinstalled on Ubuntu 24.04. Fault injection exists only in the browser test harness. Recorded local result: **66 unit tests and 14 browser tests**, including four axe checks with no detected accessibility violations.
+Browser checks use installed Google Chrome locally; CI uses Chrome preinstalled on Ubuntu 24.04. Fault injection exists only in the browser test harness. Recorded local result: **66 unit tests and 16 browser tests**, including four axe checks with no detected accessibility violations.
 
 ## Data policy
 
@@ -62,6 +62,8 @@ All runs come from [the generator](src/data/generate.ts), with seeds 1000 throug
 Search by name/ID; filter Running or Issues; sort by ID, source point count, or descending latest loss. Unavailable latest values sort last. The table fits a page of rows with Next/Previous. On small screens its region scrolls horizontally.
 
 Focus a chart: arrows inspect records; Shift + arrows move ten; `+`/`-` zoom; `P` selects its peak; `0` resets. Both range handles accept keyboard input. `/` focuses search. Run IDs are ordinary links with browser Back/Forward support.
+
+When the two range handles are close, they move into separate Start/End rows with 44px pointer targets. The overview still shows the exact selected interval. Mouse dragging, touch dragging at 390/320px and touch cancellation have browser regression coverage; the same regression fails against the original compiled baseline ([preserved output](evidence/range-regression-before.txt)).
 
 ## Submission evidence
 

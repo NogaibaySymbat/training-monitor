@@ -52,3 +52,21 @@ dist/assets/index-CTwvF78K.css            17.80 kB │ gzip:  4.47 kB
 dist/assets/index-BKp9eoA0.js            253.59 kB │ gzip: 79.33 kB │ map: 1,182.87 kB
 
 ✓ built in 93ms
+
+RUN 2026-11-11T16:02:09.911259+00:00
+
+> training-monitor@0.0.0 build
+> tsc -b && vite build --sourcemap
+
+vite v8.3.7 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                            0.63 kB │ gzip:  0.39 kB
+dist/assets/overview.worker-BIoTIBPL.js    4.79 kB
+dist/assets/run.worker-CoGExil-.js         6.13 kB
+dist/assets/index-DkoCPBAZ.css            18.98 kB │ gzip:  4.68 kB
+dist/assets/index-9xU7lZ5d.js            254.43 kB │ gzip: 79.56 kB │ map: 1,185.80 kB
+
+✓ built in 112ms

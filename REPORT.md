@@ -16,20 +16,20 @@ Apple M2 Pro, 157.0.8103.50 Chrome, production builds, headless, 1280 x 900, CPU
 
 | Metric | Before | Optimized |
 | --- | ---: | ---: |
-| All three charts ready (ms) | 529.5 | 468.2 |
-| Longest load main-thread task (ms) | 153.8 | 54.2 |
-| First 100k click response (ms) | 69.0 | 85.9 |
-| Return to All click response (ms) | 66.8 | 18.3 |
-| Hover response proxy, median (ms) | 23.8 | 29.7 |
-| Hover response proxy, maximum (ms) | 53.0 | 35.0 |
-| Retained V8 used heap (MiB) | 4.16 | 4.37 |
-| Renderer RSS after GC (MiB) | 195.06 | 195.41 |
+| All three charts ready (ms) | 529.5 | 434.6 |
+| Longest load task >=50 ms (ms) | 153.8 | 0.0 |
+| First 100k click response (ms) | 69.0 | 75.0 |
+| Return to All click response (ms) | 66.8 | 16.4 |
+| Hover response proxy, median (ms) | 23.8 | 27.9 |
+| Hover response proxy, maximum (ms) | 53.0 | 51.6 |
+| Retained V8 used heap (MiB) | 4.16 | 4.39 |
+| Renderer RSS after GC (MiB) | 195.06 | 195.72 |
 
-Initial frames now prepare in the worker, alongside generation, normalization and statistics. Original typed-array buffers transfer to the UI. A four-frame-per-metric LRU cache avoids repeat sampling; a WeakMap ties it to immutable snapshot identity. Startup main-thread blocking and repeated zoom improved, but first uncached 100k zoom and median hover regressed. The maximum observed hover proxy fell. Retained heap increased slightly. These results are reported, not averaged away. The cache-only intermediate had a 539 ms median readiness versus the 529.5 ms baseline and is retained under evidence/performance/after.
+Initial frames now prepare in the worker alongside generation, normalization and statistics; original buffers transfer to the UI. A four-frame-per-metric LRU cache uses immutable snapshot identity. The final version includes the Raw handle fix. Startup and repeated zoom improved, but cold 100k zoom and median hover regressed. Heap increased slightly. Zero in the task row means no task reached 50 ms in the median repeat. All repeats remain available, including cache-only results (539 ms readiness) under after and the prior worker version under optimized.
 
 ## Checks and their output
 
-66 unit tests in four files and 14 Playwright browser tests passed locally. Tests cover deterministic data, sorting, last-record duplicate policy, invalid/zero preservation, missing intervals, extrema, sampling bounds, cache eviction and snapshot isolation, worker-prepared frame equivalence, resize fallback, real DOM summaries/axes/hover, every exposed zoom preset, keyboard and range controls, filter/sort/pagination, unknown IDs and responsive layout. Four axe audits at 1280 and 320 px detected no violations. Raw output, reports, screenshots and Chrome-importable traces are in evidence.
+66 unit tests in four files and 16 Playwright browser tests passed locally. Coverage includes deterministic data, duplicate policy, invalid/zero preservation, gaps, extrema, sampling bounds, cache eviction and snapshot isolation, worker-frame equivalence, resize fallback, DOM summaries/axes/hover, zoom presets, keyboard, filtering and pagination. Raw handles use separate labelled rows when close; mouse, touch at 390/320 px and cancellation are tested. The new regression fails on the original baseline; its output is retained. Four axe audits at 1280/320 px found no violations. Logs, screenshots and traces are in evidence.
 
 ## Silent failures checked
 

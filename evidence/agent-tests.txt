@@ -238,3 +238,84 @@ RUN 2026-11-11T14:54:14.397277+00:00
    Start at  19:54:14
    Duration  276ms (tests 83%, import 11%, transform 4%, worker 3%)
 
+
+RUN 2026-11-11T16:02:12.088737+00:00
+
+> training-monitor@0.0.0 test
+> vitest run src --reporter=verbose
+
+
+ RUN  v5.1.0 /Users/symbat/Documents/ChatGPT/сима 2/training-monitor
+
+ ✓ src/data/normalize.test.ts > normalization > sorts steps and keeps complete records together 1ms
+ ✓ src/data/normalize.test.ts > normalization > keeps the last source record for a duplicate step 0ms
+ ✓ src/data/normalize.test.ts > normalization > does not replace a newer invalid duplicate with older valid data 0ms
+ ✓ src/data/normalize.test.ts > normalization > preserves NaN and both infinities without inserting zeros 0ms
+ ✓ src/data/normalize.test.ts > normalization > counts invalid source values even when a duplicate is removed 0ms
+ ✓ src/data/normalize.test.ts > normalization > preserves a real zero as a valid value 0ms
+ ✓ src/data/normalize.test.ts > normalization > detects missing-step intervals without filling them 0ms
+ ✓ src/data/normalize.test.ts > normalization > leaves source arrays unchanged 0ms
+ ✓ src/data/normalize.test.ts > normalization > supports an empty dataset 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects mismatched column lengths 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid training step: NaN 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid training step: Infinity 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid training step: -Infinity 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid training step: -1 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid training step: 0.5 0ms
+ ✓ src/data/normalize.test.ts > normalization > rejects an invalid expected step interval 0ms
+ ✓ src/data/normalize.test.ts > generated fixtures > defines exactly 20 runs and one million-point run 0ms
+ ✓ src/data/normalize.test.ts > generated fixtures > generates identical values for the same seed 5ms
+ ✓ src/data/normalize.test.ts > generated fixtures > preserves the single spike when normalizing one million points 113ms
+ ✓ src/data/overview.test.ts > run overview > does not substitute an older value for an invalid latest loss 1ms
+ ✓ src/data/overview.test.ts > run overview > preserves a real zero 0ms
+ ✓ src/data/overview.test.ts > run overview > returns unavailable values when every loss is invalid 0ms
+ ✓ src/data/overview.test.ts > run overview > calculates summaries after sorting and duplicate resolution 0ms
+ ✓ src/data/overview.test.ts > run overview > retains the million-point spike in a bounded preview 121ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > uses exactly the frames prepared by the worker for the measured width 13ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > recomputes a truthful frame when the viewport resizes after worker preparation 1ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > keeps invalid values and breaks when priming worker frames 4ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > reuses the same frame for equivalent requests 4ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > does not reuse a frame across snapshots with the same run ID 2ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > keeps metrics separate 1ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > keeps resolution and raw mode separate 2ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > preserves invalid values, real zeros and gaps on cache hits 3ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > retains a million-point spike and respects the visible window 67ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > evicts the least recently used frame after four windows 1ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > copies the requested range instead of retaining its mutable object 1ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > keeps input validation for cached requests 1ms
+ ✓ src/data/chartCache.test.ts > chart frame cache > supports an empty snapshot 0ms
+ ✓ src/data/overview.test.ts > run overview > separates preview segments across non-finite values 0ms
+ ✓ src/data/overview.test.ts > run overview > separates preview segments across missing steps 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 1 buckets at 0–999999 12ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 1 buckets at 400000–600000 5ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 1 buckets at 499000–501000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 1 buckets at 499990–500010 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 1 buckets at 500000–500000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 8 buckets at 0–999999 16ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 8 buckets at 400000–600000 1ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 8 buckets at 499000–501000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 8 buckets at 499990–500010 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 8 buckets at 500000–500000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 64 buckets at 0–999999 6ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 64 buckets at 400000–600000 1ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 64 buckets at 499000–501000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 64 buckets at 499990–500010 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 64 buckets at 500000–500000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 480 buckets at 0–999999 6ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 480 buckets at 400000–600000 1ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 480 buckets at 499000–501000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 480 buckets at 499990–500010 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > retains the spike with 480 buckets at 500000–500000 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > does not invent the global spike outside its viewport 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > preserves a real zero and breaks around invalid values 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > does not connect across missing steps 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > does not backfill an invalid latest value 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > keeps the axis large enough for the real peak 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > does not round a small learning rate to zero 0ms
+ ✓ src/data/chart.test.ts > chart aggregation > rejects a logarithmic axis containing zero 0ms
+
+ Test Files  4 passed (4)
+      Tests  66 passed (66)
+   Start at  21:02:11
+   Duration  275ms (tests 83%, import 13%, transform 3%, worker 1%)
+
