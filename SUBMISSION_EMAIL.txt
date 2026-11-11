@@ -1,0 +1,11 @@
+Hi team,
+
+Here is my frontend take-home submission:
+
+Live demo: https://nogaibaysymbat.github.io/training-monitor/
+Repository: https://github.com/NogaibaySymbat/training-monitor
+
+I have attached the two-page engineering note. The repository includes tests and their output, before/after Performance traces at 4x CPU slowdown, memory measurements, screenshots, known limitations and an AI assistance disclosure. The note includes the release verdict, what surprised me and what still concerns me.
+
+Best regards,
+Symbat

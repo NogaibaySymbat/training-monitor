@@ -1,5 +1,7 @@
 # Soup Run Monitor
 
+[Live demo](https://nogaibaysymbat.github.io/training-monitor/) · [Repository](https://github.com/NogaibaySymbat/training-monitor)
+
 A read-only frontend for inspecting 20 reproducible synthetic training runs. Includes corrupted records, missing steps, a genuine zero, divergence, and a one-million-point run with a single spike. There is no connection to a real training job or billing service.
 
 ## Run locally
