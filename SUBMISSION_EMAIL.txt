@@ -1,11 +1,19 @@
-Hi team,
+To: team@trysoup.dev
+Subject: Frontend Engineer take-home — Symbat
+Attachment: output/pdf/engineering-note.pdf
+
+Hi Soup team,
 
 Here is my frontend take-home submission:
 
 Live demo: https://nogaibaysymbat.github.io/training-monitor/
 Repository: https://github.com/NogaibaySymbat/training-monitor
 
-I have attached the two-page engineering note. The repository includes tests and their output, before/after Performance traces at 4x CPU slowdown, memory measurements, screenshots, known limitations and an AI assistance disclosure. The note includes the release verdict, what surprised me and what still concerns me.
+The application includes 20 reproducible synthetic runs, including a million-point run with a single outlier spike, and charts for loss, learning rate and gradient norm.
+
+I have attached the two-page engineering note with the release verdict, known limitations and reflection. The repository README links to the tests and their output, before/after Performance traces at 4× CPU slowdown, memory measurements and the AI assistance disclosure.
+
+Thank you for reviewing my submission.
 
 Best regards,
 Symbat
