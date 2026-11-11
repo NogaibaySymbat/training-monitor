@@ -346,7 +346,7 @@ function MeasuredMetricChart({
       </div>
 
       <p className="metric-meta">
-        {formatCount(frame.visibleCount)} source records
+        {formatCount(frame.visibleCount)} retained records
         {' · '}
         {formatCount(frame.points.length)} finite plot samples
         {' · '}

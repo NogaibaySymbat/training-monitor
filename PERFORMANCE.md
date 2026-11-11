@@ -52,3 +52,5 @@ npm run profile -- review http://127.0.0.1:4186 3
 To replay the actual original compiled baseline, extract `evidence/baseline-build.tar.gz` into a separate temporary directory and serve that directory with Vite preview using `--outDir` and a different port. Run the same profile script against that origin with a fresh output label. The archive includes its source maps; extracted first-party source is also retained in `evidence/baseline-source` for inspection. Never replace final source files to run the baseline.
 
 Profile labels are output directory names. Choose a new label for subsequent runs to preserve existing evidence.
+
+The captured profiles precede a final wording correction from "source records" to "retained records" in chart-window counters. Aggregation and sampling were unchanged. The clarification distinguishes deduplicated window records from the source-record count in the summary.

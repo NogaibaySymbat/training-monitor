@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-11T14:49:29.891Z",
+  "timestamp": "2026-11-11T14:54:22.519Z",
   "url": "http://127.0.0.1:4186/#/runs/run-07",
   "toolOptions": {
     "runOnly": {
@@ -6530,7 +6530,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"metric-meta\">1,000,000 source records · 1,500 finite plot samples · Min/max sampling</p>",
+          "html": "<p class=\"metric-meta\">1,000,000 retained records · 1,500 finite plot samples · Min/max sampling</p>",
           "target": [
             ".metric-container:nth-child(5) > .metric-chart > .metric-meta"
           ]
@@ -6680,7 +6680,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"metric-meta\">1,000,000 source records · 1,500 finite plot samples · Min/max sampling</p>",
+          "html": "<p class=\"metric-meta\">1,000,000 retained records · 1,500 finite plot samples · Min/max sampling</p>",
           "target": [
             ".metric-container:nth-child(7) > .metric-chart > .metric-meta"
           ]
@@ -6830,7 +6830,7 @@
           "all": [],
           "none": [],
           "impact": null,
-          "html": "<p class=\"metric-meta\">1,000,000 source records · 752 finite plot samples · Min/max sampling</p>",
+          "html": "<p class=\"metric-meta\">1,000,000 retained records · 752 finite plot samples · Min/max sampling</p>",
           "target": [
             ".metric-container:nth-child(8) > .metric-chart > .metric-meta"
           ]

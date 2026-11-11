@@ -171,6 +171,8 @@ test('duplicate resolution and gaps are disclosed on the real run', async ({ pag
   await openRun(page, 'run-04');
   await expect(page.getByText('23 duplicate records removed', { exact: true })).toBeVisible();
   await expect(page.getByText('23 missing-step ranges', { exact: true })).toBeVisible();
+  await expect(page.locator('.metric-meta').first()).toContainText('4,727 retained records');
+  await expect(page.locator('.run-statistics article:last-child strong')).toHaveText('4,750');
 });
 
 test('divergence stays visible in the full curve and the raw tail window', async ({ page }) => {
