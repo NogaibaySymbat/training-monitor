@@ -31,7 +31,7 @@ npm run build
 npm run test:e2e
 ```
 
-Browser checks use installed Google Chrome locally; CI installs and uses Playwright Chromium. Fault injection exists only in the browser test harness. Recorded local result: **66 unit tests and 13 browser tests**, including four axe checks with no detected accessibility violations.
+Browser checks use installed Google Chrome locally; CI uses Chrome preinstalled on Ubuntu 24.04. Fault injection exists only in the browser test harness. Recorded local result: **66 unit tests and 14 browser tests**, including four axe checks with no detected accessibility violations.
 
 ## Data policy
 

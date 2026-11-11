@@ -10,7 +10,7 @@ export default defineConfig({
   outputDir: 'test-results',
   use: {
     baseURL: process.env.TEST_BASE_URL ?? 'http://127.0.0.1:4186',
-    channel: process.env.CI ? undefined : 'chrome',
+    channel: 'chrome',
     viewport: { width: 1280, height: 900 },
     locale: 'en-US',
     timezoneId: 'UTC',

@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { RUNS, generateRunData } from '../src/data/generate';
 import { normalizeRunData } from '../src/data/normalize';
-import { getMetricStats } from '../src/data/chart';
+import { getMetricStats, formatChartNumber } from '../src/data/chart';
 
 async function openRun(page: Page, id = 'run-07') {
   await page.goto(`./#/runs/${id}`);
@@ -171,6 +171,23 @@ test('duplicate resolution and gaps are disclosed on the real run', async ({ pag
   await openRun(page, 'run-04');
   await expect(page.getByText('23 duplicate records removed', { exact: true })).toBeVisible();
   await expect(page.getByText('23 missing-step ranges', { exact: true })).toBeVisible();
+});
+
+test('divergence stays visible in the full curve and the raw tail window', async ({ page }) => {
+  const run = RUNS.find((entry) => entry.id === 'run-09')!;
+  const stats = getMetricStats(normalizeRunData(generateRunData(run)), 'loss');
+  expect(stats.latest!).toBeGreaterThan(stats.min! * 20);
+  await openRun(page, 'run-09');
+  await expect(page.getByLabel(`Latest loss: ${stats.latest}`, { exact: true })).toHaveAttribute('title', String(stats.latest));
+  const loss = page.locator('.metric-chart').first();
+  await expect(loss.locator('svg')).toHaveAttribute('aria-label', new RegExp(`maximum ${formatChartNumber(stats.max).replace('.', '\\.')}\\.`));
+  await page.getByRole('button', { name: 'Inspect peak', exact: true }).click();
+  await page.getByRole('button', { name: 'Raw', exact: true }).click();
+  await expect(loss.locator('.metric-meta')).toContainText('Raw');
+  await expect(loss.locator('.chart-bottom p')).toContainText('5,999');
+  await expect(loss.locator('svg')).toHaveAttribute('aria-label', new RegExp(`maximum ${formatChartNumber(stats.max).replace('.', '\\.')}\\.`));
+  await expect(loss.locator('path')).not.toHaveAttribute('d', /NaN|Infinity/);
+  await page.screenshot({ path: 'evidence/screenshots/run-09-divergence.png', fullPage: true });
 });
 
 test('worker startup failure is visible and retry recovers', async ({ page }) => {

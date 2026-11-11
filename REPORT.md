@@ -29,7 +29,7 @@ Initial frames now prepare in the worker, alongside generation, normalization an
 
 ## Checks and their output
 
-66 unit tests in four files and 13 Playwright browser tests passed locally. Tests cover deterministic data, sorting, last-record duplicate policy, invalid/zero preservation, missing intervals, extrema, sampling bounds, cache eviction and snapshot isolation, worker-prepared frame equivalence, resize fallback, real DOM summaries/axes/hover, every exposed zoom preset, keyboard and range controls, filter/sort/pagination, unknown IDs and responsive layout. Four axe audits at 1280 and 320 px detected no violations. Raw output, reports, screenshots and Chrome-importable traces are in evidence.
+66 unit tests in four files and 14 Playwright browser tests passed locally. Tests cover deterministic data, sorting, last-record duplicate policy, invalid/zero preservation, missing intervals, extrema, sampling bounds, cache eviction and snapshot isolation, worker-prepared frame equivalence, resize fallback, real DOM summaries/axes/hover, every exposed zoom preset, keyboard and range controls, filter/sort/pagination, unknown IDs and responsive layout. Four axe audits at 1280 and 320 px detected no violations. Raw output, reports, screenshots and Chrome-importable traces are in evidence.
 
 ## Silent failures checked
 
