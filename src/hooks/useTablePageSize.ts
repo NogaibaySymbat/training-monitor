@@ -95,9 +95,9 @@ export function useTablePageSize() {
           )
         : 2;
 
-      const headerHeight =
-        header?.getBoundingClientRect().height ??
-        46;
+      const headerHeight = header && getComputedStyle(header).position !== 'absolute'
+        ? header.getBoundingClientRect().height
+        : 0;
 
       const rowHeight =
         pixels(
@@ -187,6 +187,5 @@ export function useTablePageSize() {
   return {
     viewportRef,
     pageSize,
-    rowHeight: 72,
   };
 }

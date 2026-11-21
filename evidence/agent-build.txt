@@ -70,3 +70,39 @@ dist/assets/index-DkoCPBAZ.css            18.98 kB │ gzip:  4.68 kB
 dist/assets/index-9xU7lZ5d.js            254.43 kB │ gzip: 79.56 kB │ map: 1,185.80 kB
 
 ✓ built in 112ms
+
+Responsive run list: every metric visible on window resize
+
+> training-monitor@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.7 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                            0.63 kB │ gzip:  0.39 kB
+dist/assets/overview.worker-BIoTIBPL.js    4.74 kB
+dist/assets/run.worker-CoGExil-.js         6.09 kB
+dist/assets/index-Bbjphb1S.css            21.35 kB │ gzip:  5.14 kB
+dist/assets/index-Bv_tPHhJ.js            255.38 kB │ gzip: 79.59 kB
+
+✓ built in 85ms
+
+Final responsive run list verification
+
+> training-monitor@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.7 building client environment for production...
+transforming...
+✓ 35 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                            0.63 kB │ gzip:  0.39 kB
+dist/assets/overview.worker-BIoTIBPL.js    4.74 kB
+dist/assets/run.worker-CoGExil-.js         6.09 kB
+dist/assets/index-CNbnrmMT.css            21.31 kB │ gzip:  5.14 kB
+dist/assets/index-C5In-Nto.js            255.38 kB │ gzip: 79.59 kB
+
+✓ built in 84ms

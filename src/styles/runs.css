@@ -231,11 +231,14 @@
 .runs-table-viewport {
   flex: 0 0 auto;
   min-height: 0;
+  min-width: 0;
   width: 100%;
 }
 
 .runs-table-scroll {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   height: auto;
   max-height: none;
   overflow-x: auto;
@@ -247,22 +250,22 @@
 
 .runs-table {
   width: 100%;
-  min-width: 1080px;
+  min-width: 880px;
   height: auto;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .column-run {
-  width: 18%;
+  width: 20%;
 }
 
 .column-status {
-  width: 13%;
+  width: 12%;
 }
 
 .column-loss {
-  width: 24%;
+  width: 22%;
 }
 
 .column-best,
@@ -271,7 +274,7 @@
 }
 
 .column-data {
-  width: 15%;
+  width: 16%;
 }
 
 .column-points {
@@ -280,7 +283,7 @@
 
 .runs-table thead th {
   height: var(--runs-header-height);
-  padding: 0 18px;
+  padding: 0 clamp(10px, 1.2vw, 18px);
   color: #52617a;
   background: #f2f5fa;
   border-bottom: 1px solid #dce3ed;
@@ -294,7 +297,7 @@
 .runs-table tbody th,
 .runs-table tbody td {
   height: var(--runs-row-height);
-  padding: 12px 18px;
+  padding: 12px clamp(10px, 1.2vw, 18px);
   border-bottom: 1px solid #e5eaf1;
   text-align: left;
   vertical-align: middle;
@@ -316,6 +319,10 @@
 
 .runs-table tbody tr:focus-within {
   background: #f3f6fa;
+}
+
+.table-cell-label {
+  display: none;
 }
 
 .run-select {
@@ -403,7 +410,7 @@
 .sparkline-empty {
   display: block;
   flex-shrink: 0;
-  width: 96px;
+  width: clamp(70px, 7.5vw, 96px);
   height: 36px;
   color: #007fac;
 }
@@ -710,6 +717,171 @@
   margin: 0 0 20px;
   font-size: 13px;
   line-height: 1.6;
+}
+
+@media (max-width: 959px) {
+  .runs-page {
+    --runs-row-height: 204px;
+  }
+
+  .runs-table-scroll {
+    overflow: clip;
+  }
+
+  .runs-table,
+  .runs-table tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .runs-table colgroup {
+    display: none;
+  }
+
+  .runs-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .runs-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "identity identity status"
+      "loss loss loss"
+      "best peak points"
+      "quality quality quality";
+    grid-template-rows: 44px 36px 34px minmax(24px, auto);
+    gap: 10px 12px;
+    align-content: start;
+    height: var(--runs-row-height);
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5eaf1;
+  }
+
+  .runs-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .runs-table tbody th,
+  .runs-table tbody td {
+    display: block;
+    min-width: 0;
+    height: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .table-cell-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #59677b;
+    font-family: system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .run-cell-identity {
+    grid-area: identity;
+  }
+
+  .runs-table .run-cell-status {
+    grid-area: status;
+    align-self: center;
+    text-align: right;
+  }
+
+  .run-cell-status .run-status {
+    font-size: 12px;
+  }
+
+  .runs-table .run-cell-loss {
+    grid-area: loss;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .run-cell-loss .table-cell-label {
+    margin-bottom: 0;
+    font-size: 11px;
+  }
+
+  .run-cell-loss .loss-sparkline {
+    width: 96px;
+  }
+
+  .run-cell-best {
+    grid-area: best;
+  }
+
+  .run-cell-peak {
+    grid-area: peak;
+  }
+
+  .runs-table .run-cell-points {
+    grid-area: points;
+    text-align: left;
+  }
+
+  .runs-table .run-cell-quality {
+    grid-area: quality;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .run-cell-quality .table-cell-label {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 959px) {
+  .runs-page {
+    --runs-row-height: 144px;
+  }
+
+  .runs-table tbody tr {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-areas:
+      "identity identity status loss"
+      "best peak points quality";
+    grid-template-rows: 56px minmax(34px, auto);
+    gap: 12px;
+  }
+
+  .runs-table .run-cell-status {
+    text-align: left;
+  }
+
+  .runs-table .run-cell-loss,
+  .runs-table .run-cell-quality {
+    display: block;
+  }
+
+  .run-cell-loss .table-cell-label,
+  .run-cell-quality .table-cell-label {
+    margin-bottom: 4px;
+    font-size: 10px;
+  }
+
+  .run-cell-loss .loss-cell {
+    min-height: 26px;
+    gap: 8px;
+  }
+
+  .run-cell-loss .loss-sparkline {
+    width: 70px;
+    height: 26px;
+  }
 }
 
 @media (max-width: 700px) {

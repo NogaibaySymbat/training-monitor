@@ -82,7 +82,7 @@ async function fault(page: Page, mode: 'retry' | 'timeout' | 'race' | 'mismatch'
   }, { mode });
 }
 
-test('list filters, sort, empty state, keyboard search and pagination', async ({ page }) => {
+test('list filters, sort, empty state, keyboard, pagination and responsive resize', async ({ page }) => {
   await page.goto('./#/runs');
   await expect(page.getByRole('button', { name: 'Issues', exact: true })).toBeEnabled();
   const first = await page.locator('tbody th').first().innerText();
@@ -108,6 +108,56 @@ test('list filters, sort, empty state, keyboard search and pagination', async ({
   await expect(page.getByRole('heading', { name: 'No runs found' })).toBeVisible();
   await page.getByRole('button', { name: 'Clear filters' }).click();
   await expect(page.locator('tbody tr').first()).toBeVisible();
+
+  // Every value must remain readable when desktop columns stack on smaller screens.
+  await page.getByLabel('Sort runs').selectOption('points');
+  const table = page.getByRole('region', { name: 'Training runs table' });
+  for (const width of [1280, 960, 900, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 1050 });
+    await expect.poll(() => table.evaluate((node) => node.scrollWidth - node.clientWidth)).toBeLessThanOrEqual(1);
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    const row = page.locator('tbody tr').first();
+    await expect(row.getByRole('rowheader')).toContainText('run-07');
+    await expect(row.getByRole('cell')).toHaveCount(6);
+    await expect(row.locator('.run-cell-points')).toContainText('1,000,000');
+    for (const cell of await row.locator('th, td').all()) {
+      await expect(cell).toBeInViewport({ ratio: 1 });
+    }
+    if (width < 960) {
+      for (const name of ['Status', 'Loss', 'Best loss', 'Peak loss', 'Data health', 'Points']) {
+        await expect(row.getByText(name, { exact: true })).toBeVisible();
+      }
+    }
+    const overflowingText = await row.evaluate((node) => {
+      const bounds = node.getBoundingClientRect();
+      const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+      const overflow: string[] = [];
+      while (walker.nextNode()) {
+        const text = walker.currentNode;
+        if (!text.textContent?.trim() || !text.parentElement?.getClientRects().length) continue;
+        const range = document.createRange();
+        range.selectNodeContents(text);
+        for (const box of range.getClientRects()) {
+          if (box.left < bounds.left - 1 || box.right > bounds.right + 1 || box.bottom > bounds.bottom + 1) {
+            overflow.push(text.textContent.trim());
+          }
+        }
+      }
+      return overflow;
+    });
+    expect(overflowingText).toEqual([]);
+    await expect.poll(() => page.locator('.runs-footer').evaluate((node) => node.getBoundingClientRect().bottom <= innerHeight + 1)).toBe(true);
+    const firstRun = await row.locator('.run-identity strong').innerText();
+    await page.getByRole('button', { name: 'Next', exact: true }).click();
+    await expect(page.locator('tbody tr').first().locator('.run-identity strong')).not.toHaveText(firstRun);
+    await page.getByRole('button', { name: 'Previous', exact: true }).click();
+    await expect(page.locator('tbody tr').first().locator('.run-identity strong')).toHaveText(firstRun);
+  }
+  await page.setViewportSize({ width: 1280, height: 1050 });
+  await expect.poll(() => page.locator('tbody tr').first().evaluate((node) => node.getBoundingClientRect().height)).toBe(72);
+  await page.getByLabel('Sort runs').selectOption('id');
+  await page.getByRole('link', { name: 'Open run-01, Experiment 01', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'run-01', exact: true })).toBeVisible();
 });
 
 test('real million-point peak survives every exposed zoom preset and keyboard navigation', async ({ page }) => {

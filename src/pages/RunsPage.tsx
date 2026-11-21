@@ -1,7 +1,4 @@
-import {
-  useState,
-  type CSSProperties,
-} from 'react';
+import { useState } from 'react';
 
 import { RUNS } from '../data/generate';
 import { hasDataIssues } from '../data/overview';
@@ -30,7 +27,6 @@ export default function RunsPage() {
   const {
     viewportRef,
     pageSize,
-    rowHeight,
   } = useTablePageSize();
 
   const [query, setQuery] = useState('');
@@ -110,12 +106,6 @@ export default function RunsPage() {
     startIndex + pageSize,
   );
 
-  const viewportStyle: CSSProperties & {
-    '--page-row-height': string;
-  } = {
-    '--page-row-height': `${rowHeight}px`,
-  };
-
   function clearFilters() {
     setQuery('');
     setFilter('all');
@@ -187,7 +177,6 @@ export default function RunsPage() {
       <div
         ref={viewportRef}
         className="runs-table-viewport"
-        style={viewportStyle}
       >
         {visibleRuns.length === 0 ? (
           <section className="runs-empty">

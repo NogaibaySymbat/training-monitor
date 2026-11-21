@@ -138,3 +138,65 @@ Running 16 tests using 1 worker
   ✓  16 e2e/range-navigation.spec.ts:66:1 › narrow Raw controls remain independent under touch and recover after cancellation (4.4s)
 
   16 passed (15.1s)
+
+Responsive run list: every metric visible on window resize
+
+> training-monitor@0.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:32065) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:32066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/monitor.spec.ts:85:1 › list filters, sort, empty state, keyboard, pagination and responsive resize (2.1s)
+  ✓   2 e2e/monitor.spec.ts:163:1 › real million-point peak survives every exposed zoom preset and keyboard navigation (821ms)
+  ✓   3 e2e/monitor.spec.ts:193:1 › summary numbers match original generated values and invalid hover stays NaN (297ms)
+  ✓   4 e2e/monitor.spec.ts:211:1 › zero loss disables log scale and remains inspectable (203ms)
+  ✓   5 e2e/monitor.spec.ts:220:1 › duplicate resolution and gaps are disclosed on the real run (222ms)
+  ✓   6 e2e/monitor.spec.ts:228:1 › divergence stays visible in the full curve and the raw tail window (338ms)
+  ✓   7 e2e/monitor.spec.ts:245:1 › worker startup failure is visible and retry recovers (299ms)
+  ✓   8 e2e/monitor.spec.ts:255:1 › a non-responding worker times out instead of loading forever (184ms)
+  ✓   9 e2e/monitor.spec.ts:265:1 › late responses from the previous run cannot replace the current charts (1.0s)
+  ✓  10 e2e/monitor.spec.ts:277:1 › a response with the wrong run ID is ignored (410ms)
+  ✓  11 e2e/monitor.spec.ts:285:1 › empty and entirely non-finite datasets have explicit states (492ms)
+  ✓  12 e2e/monitor.spec.ts:303:1 › timestamps and numbers stay explicit across locale and timezone (456ms)
+  ✓  13 e2e/monitor.spec.ts:320:1 › desktop and 320px layouts fit, paginate, and pass automated accessibility checks (2.6s)
+  ✓  14 e2e/monitor.spec.ts:339:1 › unknown run has a useful recovery link (308ms)
+  ✓  15 e2e/range-navigation.spec.ts:29:1 › Raw start and end handles can be dragged independently with the mouse (1.4s)
+  ✓  16 e2e/range-navigation.spec.ts:66:1 › narrow Raw controls remain independent under touch and recover after cancellation (4.6s)
+
+  16 passed (17.1s)
+
+Final responsive run list verification
+
+> training-monitor@0.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:32359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:32360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/monitor.spec.ts:85:1 › list filters, sort, empty state, keyboard, pagination and responsive resize (2.1s)
+  ✓   2 e2e/monitor.spec.ts:163:1 › real million-point peak survives every exposed zoom preset and keyboard navigation (593ms)
+  ✓   3 e2e/monitor.spec.ts:193:1 › summary numbers match original generated values and invalid hover stays NaN (281ms)
+  ✓   4 e2e/monitor.spec.ts:211:1 › zero loss disables log scale and remains inspectable (222ms)
+  ✓   5 e2e/monitor.spec.ts:220:1 › duplicate resolution and gaps are disclosed on the real run (209ms)
+  ✓   6 e2e/monitor.spec.ts:228:1 › divergence stays visible in the full curve and the raw tail window (373ms)
+  ✓   7 e2e/monitor.spec.ts:245:1 › worker startup failure is visible and retry recovers (326ms)
+  ✓   8 e2e/monitor.spec.ts:255:1 › a non-responding worker times out instead of loading forever (199ms)
+  ✓   9 e2e/monitor.spec.ts:265:1 › late responses from the previous run cannot replace the current charts (1.0s)
+  ✓  10 e2e/monitor.spec.ts:277:1 › a response with the wrong run ID is ignored (443ms)
+  ✓  11 e2e/monitor.spec.ts:285:1 › empty and entirely non-finite datasets have explicit states (463ms)
+  ✓  12 e2e/monitor.spec.ts:303:1 › timestamps and numbers stay explicit across locale and timezone (449ms)
+  ✓  13 e2e/monitor.spec.ts:320:1 › desktop and 320px layouts fit, paginate, and pass automated accessibility checks (2.6s)
+  ✓  14 e2e/monitor.spec.ts:339:1 › unknown run has a useful recovery link (289ms)
+  ✓  15 e2e/range-navigation.spec.ts:29:1 › Raw start and end handles can be dragged independently with the mouse (1.4s)
+  ✓  16 e2e/range-navigation.spec.ts:66:1 › narrow Raw controls remain independent under touch and recover after cancellation (4.4s)
+
+  16 passed (16.6s)

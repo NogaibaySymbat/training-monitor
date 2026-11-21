@@ -34,3 +34,15 @@ Raw range test viewport correction verification
 > training-monitor@0.0.0 lint
 > eslint .
 
+
+Responsive run list: every metric visible on window resize
+
+> training-monitor@0.0.0 lint
+> eslint .
+
+
+Final responsive run list verification
+
+> training-monitor@0.0.0 lint
+> eslint .
+

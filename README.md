@@ -14,7 +14,7 @@ The application contains **20 reproducible synthetic runs**, including a run wit
 - Open [run-07](https://nogaibaysymbat.github.io/training-monitor/#/runs/run-07), select **Inspect peak**, and compare the full range with narrower windows. The loss spike is **250 at step 500,000**.
 - Open **run-03** for NaN and infinities, **run-08** for a true zero, and **run-09** for divergence.
 
-Loading, empty, error, retry and unknown-run states are implemented. The list uses Previous/Next pagination; on narrow screens, its table can be scrolled horizontally.
+Loading, empty, error, retry and unknown-run states are implemented. The list uses Previous/Next pagination. As the window narrows, table rows become compact labelled layouts that keep every metric visible without horizontal scrolling; widening the window restores the column layout.
 
 ## Run locally
 
@@ -151,6 +151,6 @@ Relative Vite assets and hash routes support a GitHub Pages project subpath. The
 - Uncached viewport sampling still runs on the main thread. Moving those queries into a worker or a tested range index is the first performance follow-up.
 - Sampling preserves bucket extrema and line breaks, not every fluctuation or the exact position of every invalid value at compressed scales. Automated tests cover finite fixtures and exposed presets, not every possible dataset, zoom width or browser rasterization.
 - The cache assumes immutable snapshots. Future live updates must create new data identities or explicitly invalidate cached frames.
-- Returning to the list resets its search, filter and sort state. Mobile tests use Chrome emulation; manual screen-reader and physical-device testing remain follow-ups. Automated axe checks do not establish full accessibility coverage.
+- Returning to the list resets its search, filter and sort state. Browser tests cover resizing from 1280px to 320px and back, including all row values and pagination. Mobile tests use Chrome emulation; manual screen-reader and physical-device testing remain follow-ups. Automated axe checks do not establish full accessibility coverage.
 
 **Release verdict: SHIP the scoped read-only demo.** The [engineering note](output/pdf/engineering-note.pdf) explains the evidence and what must change before treating it as a monitor for a paid live run.

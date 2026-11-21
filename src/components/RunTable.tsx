@@ -68,6 +68,7 @@ export default function RunTable({
     >
       <table
         className="runs-table"
+        role="table"
         aria-busy={loading}
       >
         <caption className="sr-only">
@@ -87,16 +88,17 @@ export default function RunTable({
           <col className="column-points" />
         </colgroup>
 
-        <thead>
-          <tr>
-            <th scope="col">Run</th>
-            <th scope="col">Status</th>
-            <th scope="col">Loss</th>
-            <th scope="col">Best loss</th>
-            <th scope="col">Peak loss</th>
-            <th scope="col">Data health</th>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Run</th>
+            <th scope="col" role="columnheader">Status</th>
+            <th scope="col" role="columnheader">Loss</th>
+            <th scope="col" role="columnheader">Best loss</th>
+            <th scope="col" role="columnheader">Peak loss</th>
+            <th scope="col" role="columnheader">Data health</th>
             <th
               scope="col"
+              role="columnheader"
               className="align-right"
             >
               Points
@@ -104,14 +106,14 @@ export default function RunTable({
           </tr>
         </thead>
 
-        <tbody>
+        <tbody role="rowgroup">
           {runs.map((run) => {
             const overview = overviews[run.id];
             const loaded = overview !== undefined;
 
             return (
-              <tr key={run.id}>
-                <th scope="row">
+              <tr key={run.id} role="row">
+                <th scope="row" role="rowheader" className="run-cell-identity">
                   <a
                     className="run-select"
                     href={
@@ -135,7 +137,8 @@ export default function RunTable({
                   </a>
                 </th>
 
-                <td>
+                <td role="cell" className="run-cell-status">
+                  <span className="table-cell-label" aria-hidden="true">Status</span>
                   <span
                     className={
                       `run-status run-status-${run.status}`
@@ -145,7 +148,8 @@ export default function RunTable({
                   </span>
                 </td>
 
-                <td>
+                <td role="cell" className="run-cell-loss">
+                  <span className="table-cell-label" aria-hidden="true">Loss</span>
                   <div className="loss-cell">
                     {overview ? (
                       <LossSparkline
@@ -170,7 +174,8 @@ export default function RunTable({
                   </div>
                 </td>
 
-                <td>
+                <td role="cell" className="run-cell-best">
+                  <span className="table-cell-label" aria-hidden="true">Best loss</span>
                   <NumericValue
                     value={overview?.bestLoss}
                     loaded={loaded}
@@ -178,7 +183,8 @@ export default function RunTable({
                   />
                 </td>
 
-                <td>
+                <td role="cell" className="run-cell-peak">
+                  <span className="table-cell-label" aria-hidden="true">Peak loss</span>
                   <NumericValue
                     value={overview?.peakLoss}
                     loaded={loaded}
@@ -186,7 +192,8 @@ export default function RunTable({
                   />
                 </td>
 
-                <td>
+                <td role="cell" className="run-cell-quality">
+                  <span className="table-cell-label" aria-hidden="true">Data health</span>
                   <QualityBadges
                     overview={overview}
                     failed={failed}
@@ -194,9 +201,11 @@ export default function RunTable({
                 </td>
 
                 <td
-                  className="points-cell"
+                  role="cell"
+                  className="points-cell run-cell-points"
                   title="Source records before duplicate resolution"
                 >
+                  <span className="table-cell-label" aria-hidden="true">Points</span>
                   {formatCount(run.pointCount)}
                 </td>
               </tr>
